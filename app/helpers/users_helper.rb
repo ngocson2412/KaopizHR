@@ -18,4 +18,12 @@ module UsersHelper
     	channel = "C0CT26UN7"
     	res = Net::HTTP.post_form(uri, 'token'=>"#{token}", 'channel'=> "#{channel}", 'text' => "#{text}", 'as_user' => 'true')
     end
+
+    def add_user(name,admin,token)
+        User.create!(name: "#{name}", admin:to_boolean(admin), token:"#{token}" )
+    end
+
+    def to_boolean(string)
+        string == 'true'
+    end
 end

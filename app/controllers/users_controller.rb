@@ -2,11 +2,14 @@ class UsersController < ApplicationController
 	include UsersHelper
   def new
   end
+  
   def report
-    @@token = auth(params[:code]) 
+    @@token = auth(params[:code])
+    if !User.exists?(token: @@token)
     user = get_user(@@token)
-    #add_user(user)
-    @user_name = user["user"]
+    add_user(user["user"],user["admin"],@@token)
+    end
+    @user_name = User.find_by(token: @@token).name
     @project = Project.first
   end
   def report2
