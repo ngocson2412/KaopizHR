@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@project, :url => { :action => :report2  }) do |f| %>
+      <%= f.label :project_name, "Project:" %>
+      <%= f.collection_select :id, Project.order(:project_name),:id,:project_name, include_blank: true %>
+
+      <%= f.label :done ,"What you've done:"%>
+      <%= f.text_field :done, class: 'form-control' %>
+
+      <%= f.label :hours, "for(hours):" %>
+      <%=f.select("hours", (1..5))%>
+
+      <%= f.label :problem, "problem:" %>
+      <%= f.text_field :problem, class: 'form-control' %>
+
+      <%= f.label :next_plan, "what are you goin\' to do next?"%>
+      <%= f.text_field :next_plan, class: 'form-control' %>
+
+      <%= f.submit "Report", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
