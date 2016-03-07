@@ -40,7 +40,7 @@ h1 {
   font-size: 3em;
   letter-spacing: -2px;
   margin-bottom: 30px;
-  text-align: center;
+  margin-left: 30%;
 }
 
 h2 {
@@ -137,4 +137,11 @@ input {
   .form-control {
     color: $state-danger-text;
   }
+}
+.project_name {
+  font-size: 35px;
+  font-family: serif;
+}
+#navigation{
+    position: fixed;
 }
