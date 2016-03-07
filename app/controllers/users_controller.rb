@@ -4,12 +4,18 @@ class UsersController < ApplicationController
   end
   
   def report
-    @@token = auth(params[:code])
-    if !User.exists?(token: @@token)
-    user = get_user(@@token)
-    add_user(user["user"],user["admin"],@@token)
+  if logged_in?
+    @user = current_user
+  else
+    token = auth(params[:code])
+    if !User.exists?(token: token)
+    new_user = get_user(token)
+    @user = add_user(new_user["user"],new_user["admin"],token)
+    else
+      @user = User.find_by(token: token)
     end
-    @user_name = User.find_by(token: @@token).name
+    log_in @user
+  end
     @project = Project.first
   end
   def report2
@@ -17,7 +23,7 @@ class UsersController < ApplicationController
   	project_name = @project.project_name
   	text = "[Project_name:]\n#{project_name}\n[Done:]\n#{params[:project][:hours]} hours\n[Problem:]\n#{params[:project][:problem]}\n[Next_plan:]\n#{params[:project][:next_plan]}"
   	@project.real_time += params[:project][:hours].to_i
-  	@res = post_report(text, @@token)
+  	@res = post_report(text, current_user.token)
      if @res.is_a?(Net::HTTPSuccess)
      flash.now[:success] = "#Successfully reported!"
      end

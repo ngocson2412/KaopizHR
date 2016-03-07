@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :projects
   get 'report' => 'users#report'
   get 'login' => 'signin#new'
+  delete 'logout' => 'signin#destroy'
   #post 'report' => 'users#report2'
   patch 'report' => 'users#report2'
 

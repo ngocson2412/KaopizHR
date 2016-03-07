@@ -1,1 +1,5 @@
-<a href="https://slack.com/oauth/authorize?scope=chat:write:bot+users:read&client_id=2760961654.22987639603&redirect_uri=http://localhost:3000/report">Log in via slack </a>
+<% if logged_in? %>
+<%=link_to  "Hi,#{current_user.name}. Let\'s report", '/report' %>
+<%else%>
+<%=render 'login_via_slack'%>
+<%end%>
