@@ -32,7 +32,11 @@ class UsersController < ApplicationController
     else
       render 'report'
     end
-end
+  end
+
+  def show
+    @user = User.find_by(id: params[:id])
+  end
 
   private
     def user_project_params

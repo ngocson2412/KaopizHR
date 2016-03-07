@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   delete 'logout' => 'signin#destroy'
   #post 'report' => 'users#report2'
   patch 'report' => 'users#report2'
+  resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
