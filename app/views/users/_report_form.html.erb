@@ -15,7 +15,17 @@
 
       <%= f.label :next_plan, "what are you goin\' to do next?"%>
       <%= f.text_field :next_plan, class: 'form-control' %>
-
+      
+          <h2>Simple Collapsible</h2>
+          <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
+          <div id="demo" class="collapse">
+            <%for i in (1..10)%>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            <%end%>
+          </div>
+      
       <%= f.submit "Report", class: "btn btn-primary" %>
     <% end %>
   </div>
