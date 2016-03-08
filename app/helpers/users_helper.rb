@@ -27,4 +27,5 @@ module UsersHelper
     def to_boolean(string)
         string == 'true'
     end
+    #some code
 end
