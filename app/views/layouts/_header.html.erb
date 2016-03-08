@@ -1,3 +1,4 @@
+<%host = YAML.load_file(Rails.root.join('config', 'settings.yml').to_s)[Rails.env]["host"] %>
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <%= link_to "Kaopiz Daily Report", root_path, id: "logo" %>
@@ -19,7 +20,7 @@
             </ul>
           </li>
         <% else %>
-          <li><%= link_to "Log in", 'https://slack.com/oauth/authorize?scope=chat:write:bot+users:read&client_id=2760961654.22987639603&redirect_uri=http://localhost:3000/report'%></li>
+          <li><%= link_to "Log in", "https://slack.com/oauth/authorize?scope=chat:write:bot+users:read&client_id=2760961654.22987639603&redirect_uri=#{host}/report"%></li>
         <% end %>
       </ul>
     </nav>
