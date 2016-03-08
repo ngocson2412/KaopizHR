@@ -1,0 +1,2 @@
+<%host = YAML.load_file(Rails.root.join('config', 'settings.yml').to_s)[Rails.env]["host"]%>
+<a href="https://slack.com/oauth/authorize?scope=chat:write:bot+users:read&client_id=2760961654.22987639603&redirect_uri=<%=host%>/report">Log in via slack </a>
